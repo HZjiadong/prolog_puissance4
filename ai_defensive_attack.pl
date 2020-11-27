@@ -17,6 +17,7 @@ transformIndexList(List, [H|AvailableIndex], [R|Results]) :-  nth0(H, List, R), 
 
 findMaxFromIndex(MyList, IndexList, MaxIndex) :- transformIndexList(MyList, IndexList, Results), max_list(Results, MaxValue), nth0(IndexMiddle, Results, MaxValue), nth0(IndexMiddle, IndexList, MaxIndex).
 
+
 getMovedResults(Index, Player, R1, R2) :- getMovedResult(Index, Player, R1),
 										  changePlayer(Player, Opponent), getMovedResult(Index, Opponent, R2). 
 
@@ -36,7 +37,7 @@ findMove(MyList, DefenseList, Index) :-	max_list(DefenseList, DefenseResult),
 							   			containNumber(DefenseList, DefenseResult, N), N > 1, allIndex(DefenseList, DefenseList, DefenseResult, IndexList),
 							   			findMaxFromIndex(MyList, IndexList, Index),!.						   			
 
-indexToMove2(Index, Player) :- moveSimulation(0, Player, MyList, DefenseList), writeln(MyList), writeln(DefenseList), findMove(MyList, DefenseList, Index).	
+indexToMove2(Index, Player) :- moveSimulation(0, Player, MyList, DefenseList), writeln(MyList), writeln(DefenseList), findMove(MyList, DefenseList, Index),!.	
 
 
 
